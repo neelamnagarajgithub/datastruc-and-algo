@@ -8,16 +8,16 @@ int main() {
     char t;
     int l1=0,l2=0,flag=0,c=0;
     printf("Enter string 1:");
-     scanf("%s",a);
-     printf("Enter string 2:");
-     scanf("%s",b);
-     l1=strlen(a);
-     l2=strlen(b);
-     if(l1==l2){
+    scanf("%s",a);
+    printf("Enter string 2:");
+    scanf("%s",b);
+    l1=strlen(a);
+    l2=strlen(b);
+    if(l1==l2){
         //sorting of string1
-     for(int i=0;i<l1;i++) {
-        for(int j=0;i<l1-i;i++) {
-        if(a[i]>a[i+1]){
+    for(int i=0;i<l1;i++) {
+       for(int j=0;i<l1-i;i++) {
+     if(a[i]>a[i+1]){
             t=a[i];
             a[i]=a[i+1];
             a[i+1]=t;
@@ -36,10 +36,9 @@ int main() {
      }
      //checking both are equal or not
      if(strcmp(a,b)==0)
-       {
+    {
         printf("Anagram");
-       }
-     }
+    }}
      if(l1!=l2) {
         printf("Not an anagram");
      }
