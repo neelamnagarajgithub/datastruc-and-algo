@@ -1,27 +1,35 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <math.h>
 
 int main() {
-    int a[100];
-    int n,t;    
-    printf("Enter number the elements:");
-    scanf("%d",&n);
-   for(int i=0;i<n;i++) {
-    scanf("%d",&a[i]);
-   }
-   printf("Array before sorting :\n");
-   for(int i=0;i<n;i++) {
-    printf("a[%d]=%d\n",i,a[i]);
-   }
-   for(int i=0;i<n;i++) {
-    if(a[i]>a[i+1])
-    t=a[i];
-    a[i]=a[i+1];
-    a[i+1]=t;
-   }
-   printf("Array after sorting:\n");
-   for(int i=0;i<n;i++)
-    {
-     printf("a[%d]=%d\n",i,a[i]);
+    int low, high, i, temp1, temp2, remainder, n = 0, result = 0;
+    
+    printf("Enter two numbers(intervals): ");
+    scanf("%d %d", &low, &high);
+    printf("Armstrong numbers between %d an %d are: ", low, high);
+
+    for(i = low + 1; i < high; ++i) {
+        temp2 = i;
+        temp1 = i;
+
+        while (temp1 != 0) {
+            temp1 /= 10;
+            ++n;
+        }
+
+        while (temp2 != 0) {
+            remainder = temp2 % 10;
+            result += pow(remainder, n);
+            temp2 /= 10;
+        }
+
+        if (result == i) {
+            printf("%d ", i);
+        }
+
+        n = 0;
+        result = 0;
     }
+
     return 0;
 }
