@@ -1,15 +1,24 @@
 #include<stdio.h>
-int sum(int n) {
-  if(n==0) 
-  return 0;
-  else
-  return (n%10)+sum(n/10);
+int main()
+{
+int a[20],*p,i,n,key,found=0;
+printf("Enter the size of an array");
+scanf("%d",&n);
+printf("Enter %d elements:",n);
+for(i=0;i<n;i++)
+scanf("%d",(p+i));
+printf("Enter a key to search");
+scanf("%d",&key);
+for(i=0;i<n;i++)
+{
+if(key==*(p+i))
+{
+found=1;
+break;
 }
-int main() {
-  int n,y;
-  printf("Enter a number:");
-  scanf("%d",&n);
-  y=sum(n);
-  printf("Sum of digits of the given number :%d",y);
-  return 0;
+}
+if(found==1)
+printf("Key found at %d position",i+1);
+else
+printf("key not found");
 }
