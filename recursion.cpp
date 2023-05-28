@@ -1,18 +1,22 @@
 #include<iostream>
 using namespace std;
-int c;
-int  printing(int c,int n) {
-
-  if(c==n) 
-  return 0; 
-  else{
-    cout<<c<<endl;
-    return printing(c+1,n);
-  }
+int fibo(int x) {
+    if(x==0) {
+        return 0;
+    }
+    else if(x==1) {
+        return 1;
+    }
+    else{
+        return fibo(x-1)+fibo(x-2);
+    }
 }
 int main() {
 int n;
-cout<<"enter the value of n";
+cout<<"enter a number";
 cin>>n;
-  printing(1,n);
+for(int i=0;i<n;i++){
+cout<<fibo(i)<<endl;
+}
+return 0;
 }

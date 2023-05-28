@@ -6,7 +6,7 @@ class op_on_arrays
 public:
     int key;
     int ind;
-    int t;
+     ;int t;
 
 public:
     void traverse(int arr[], int n)
