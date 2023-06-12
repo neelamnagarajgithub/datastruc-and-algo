@@ -5,9 +5,10 @@ int arr[20];
 int front=-1;
 int rear=-1;
 void enqueue(int data) {
-    if(front==-1&&rear==-1) {
+    if(front==-1&&rear==-1)
+      {
         front=0;
-        rear=-1;
+        rear=-1; 
         arr[rear]=data;
     }
     else if(rear==maxsize-1){
