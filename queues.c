@@ -1,92 +1,95 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define s 10
-struct queue
+#define max 6
+int front = -1;
+int rear = -1;
+int queue[max];
+void Enqueue(int x)
 {
-    int *arr;
-    int front;
-    int rear;
-    int size;
-} ;
-int isEmpty(struct queue *p)
-{
-    if (p->rear==-1)
+    if (rear == max - 1)
     {
-        return 1;
+        printf("queue is full");
+    }
+    else if (front == -1 && rear == -1)
+    {
+        front = 0;
+        rear = 0;
+        queue[rear] = x;
     }
     else
     {
-        return 0;
+        rear++;
+        queue[rear] = x;
     }
 }
-int isFull(struct queue *p)
+void dequeue()
 {
-    if (p->rear == (p->size) - 1)
+    if (front == -1 && rear == -1)
     {
-        return 1;
+        printf("Queue is Empty");
+    }
+    else if (front == 0 && rear == 0)
+    {
+        printf("Dequeued element :%d\n", queue[front]);
+        front--;
+        rear--;
     }
     else
     {
-        return 0;
+        printf("Dequeued element :%d\n", queue[front]);
+        front--;
     }
 }
-void enqueue(struct queue *p, int val)
+void display()
 {
-    if (isFull(p))
+    if (front == -1 && rear == -1)
     {
-        printf("Queue overflow");
-    }
-    else if(p->front==-1) {
-        p->front=0;
-        p->rear++;
-        p->arr[p->rear]=val;
+        printf("Queue is Empty");
     }
     else
     {
-        p->rear++;
-        p->arr[p->rear] = val;
-    }
-}
-void dequeue(struct queue *p)
-{
-    int u;
-    if (isEmpty(p))
-    {
-        printf("Queue undeflow");
-    }
-    else
-    {
-        p->front++;
-    }
-}
-void display(struct queue *p)
-{
-    if (isEmpty(p))
-    {
-        printf("the queue is empty");
-    }
-    else
-    {
-        printf("The elements of the queue are:\n");
-        for (int i = p->front; i <= p->rear; i++)
+        for (int i = front; i <= rear; i++)
         {
-            printf("%d ", p->arr[i]);
+            printf("%d", queue[i]);
         }
     }
 }
 int main()
-{struct queue *p;
-   p->size=s;   
-    p = (int *)malloc(s * sizeof(int));
-    p->front=-1;
-    p->rear=-1;
-    enqueue(p, 98);
-    enqueue(p, 78);
-    enqueue(p, 74);
-    enqueue(p, 45);
-    dequeue(p);
-    dequeue(p);
-
-    display(p);
-    return 0;
+{
+    int op, x;
+    printf("Press 1.Enqueue\n 2.Dequeue\n 3.Display \n 4.Exit");
+    while (1)
+    {
+        printf("Enter your choice: ");
+        scanf("%d", &op);
+        switch (op)
+        {
+        case 1:
+        {
+            printf("Enter value:");
+            scanf("%d", &x);
+            Enqueue(x);
+            break;
+        }
+        case 2:
+        {
+            dequeue();
+            break;
+        }
+        case 3:
+        {
+            display();
+            break;
+        }
+        case 4:
+        {
+            exit(0);
+            break;
+        }
+        default:
+        {
+            printf("Enter a valid option");
+        }
+        }
+    }
 }
